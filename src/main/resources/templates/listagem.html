@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+
+<head>
+    <title>Lista de Filmes | AssisteMundo</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar center">
+            <a class="navbar-logo" th:href="@{/inicio}">AssisteMundo</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="titulo center">
+            <h1>Lista de Filmes</h1>
+        </div>
+
+        <div class="section-tabela">
+            <table class="tabela-filmes">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Gênero</th>
+                        <th>Ano de Lançamento</th>
+                        <th></th>
+                    </tr>
+                </thead>
+    
+                <tbody>
+                    <tr th:each="filme : ${lista}">
+                        <td th:text="${filme.id}">asdf</td>
+                        <td th:text="${filme.nome}">asdf</td>
+                        <td th:text="${filme.genero}">asdf</td>
+                        <td th:text="${filme.anoLancamento}">asdf</td>
+                        <td>
+                            <a class="botao-detalhes" th:href="@{'/detalhes?id=' + ${filme.id}}">Detalhes</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+</body>
+</html>

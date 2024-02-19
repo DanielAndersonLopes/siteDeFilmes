@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+
+<head>
+    <title>AssisteMundo</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+
+</head>
+
+<body>
+    <header>
+        <nav class="navbar center">
+            <a class="navbar-logo" th:href="@{/inicio}">AssisteMundo</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="botoes-navegacao">
+            <a class="botaoLink center" th:href="@{/cadastrarFilme}">cadastrar</a>
+
+            <a class="botaoLink center" th:href="@{/listar}">filmes</a>
+        </div>
+    </main>
+
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+
+<head>
+    <title>Cadastrar Filme | AssisteMundo
+    </title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar center">
+            <a class="navbar-logo" th:href="@{/inicio}">AssisteMundo</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="titulo center">
+            <h1>Cadastrar Filme</h1>
+        </div>
+
+        <section class="formularioCadastro">
+            <form th:action="@{/gravar}" th:object="${filme}" method="POST">
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" th:field="${filme.nome}" required />
+                <label for="genero">Gênero</label>
+                <input type="text" id="genero" th:field="${filme.genero}" required />
+                <label for="anoLancamento">Ano de Lançamento</label>
+                <input type="text" id="anoLancamento" th:field="${filme.anoLancamento}" required />
+
+                <button type="submit" class="botaoCadastro">Cadastrar</button>
+            </form>
+        </section>
+    </main>
+
+</body>
+</html>

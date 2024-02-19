@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+
+    <head>
+        <title>Lista de Filmes | AssisteMundo</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <link rel="stylesheet" th:href="@{/css/style.css}">
+    </head>
+
+    <body>
+
+        <header>
+            <nav class="navbar center">
+                <a class="navbar-logo" th:href="@{/inicio}">AssisteMundo</a>
+            </nav>
+        </header>
+
+        <main>
+            <div class="titulo center">
+                <h1 class="titulo"><span th:text='${filme.nome}'>Titanic</span></h1>
+            </div>
+
+            <section class="formularioPreenchido">
+                <form th:action="@{/gravar}" th:object="${filme}" method="POST">
+                    <label for="nome">ID</label>
+                    <input type="text" id="nome" th:value="${filme.id}" disabled />
+                    <label for="nome">Nome</label>
+                    <input type="text" id="nome" th:value="${filme.nome}" disabled />
+                    <label for="genero">Gênero</label>
+                    <input type="text" id="genero" th:value="${filme.genero}" disabled />
+                    <label for="anoLancamento">Ano de Lançamento</label>
+                    <input type="text" id="anoLancamento" th:value="${filme.anoLancamento}" disabled />
+                </form>
+            </section>
+
+            <section class="avaliacao">
+                <div class="texto-comentario">
+                    <h2>Comentários</h2>
+                </div>
+
+                <div class="comentarios">
+                    <div class="formularioComentario formularioCadastro center">
+                        <h3>Escreva seu comentário</h3>
+                        <form class="center" th:action="@{/gravar-analise}" th:object="${analise}" method="POST">
+                            <textarea id="comentario" cols="0" rows="10" th:field="${analise.comentario}"
+                                      placeholder="Escreva um comentário..." required></textarea>
+
+                            <div class="inputComentario">
+                                <input type="number" id="nota" th:field="${analise.nota}" min="0" max="10"
+                                       placeholder="Sua nota" required />
+                                <input type="text" id="nomeUsuario" th:field="${analise.nome}" placeholder="Seu nome"
+                                       required />
+                                <input type='hidden' th:field='${filme.id}' />
+                            </div>
+
+
+                            <button class="botaoComentar botaoCadastro" type="submit">Comentar</button>
+                        </form>
+                    </div>
+
+                    <div class="avaliacoes">
+                        <th:block th:each="analise : ${analises}">
+                            <ul class="avaliacaoCompleta">
+                                <li>
+                                    <p>Nota: <span th:text='${analise.nota}'></span></p>
+                                    <p>"<span th:text='${analise.comentario}'>text</span>"</p>
+                                    <p>----</p>
+                                    <p><span th:text='${analise.nome}'>text</span></p>
+                                </li>
+                            </ul>
+                        </th:block>
+                    </div>
+                </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </body>
+
+</html>
